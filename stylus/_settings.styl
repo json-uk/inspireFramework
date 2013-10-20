@@ -1,0 +1,48 @@
+// ====
+// MAIN SETTINGS
+// ================================================================================
+
+// Dev Mode; set to false to remove lines
+// =================================================
+$dev-mode = true;
+
+// Browser Default Font Size == 16px
+$baseFontContext = 16px;
+// end 
+
+$baseFontSize = 16px;
+$baseFontPercentage = unit($baseFontSize / $baseFontContext * 100, '%');
+$lineHeightRatio = 1.5;
+$scaleFactor = 1.618;
+$baseLineHeight = ceil((remove-unit($baseFontSize) * $lineHeightRatio));
+$baseGutter = unit($baseLineHeight,'px');
+// end
+
+// Base Grid Settings
+// Change these settings to setup your grid
+$gridMinWidth = 960;
+$gridMaxWidth = 1240;
+$gridMinWidthEms = unit($gridMinWidth / $baseFontSize, 'em');
+$gridEmsWidthEms = unit($gridMaxWidth / $baseFontSize, 'em');
+$colsTotal = 12;
+// From the article here: http://tylertate.com/blog/2012/01/05/subpixel-rounding.html
+$subPixelCorrection = (0.5 / unit($gridMinWidth,'px')) * 100 * 1%;
+
+// Set grid type
+// @param $gridType: fluid[, fixed, mobileFirst]
+$gridType = mobileFirst;
+
+// Setting this to false removes old IE fallbacks
+$old-ie ?= false;
+
+// List of prefixes to include
+// Used by Nib
+vendor-prefixes ?= webkit moz ms official
+
+// Colour Palettes
+// types: monocromatic, analogous, complimentary, triad
+//$palette = monocromatic;
+
+
+
+

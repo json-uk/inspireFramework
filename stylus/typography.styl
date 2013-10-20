@@ -1,0 +1,175 @@
+// Begin Typography Styles
+//
+// ============================================
+html {
+  font-size: $baseFontPercentage;
+}
+body {
+  if $dev-mode {
+    devModeGrid();
+    background-repeat: repeat-y;
+    backgroundSize(100% $baseGutter);  
+  }
+  fontSH($baseFontSize);
+  color: $text;
+}
+h1, h2, h3, h4 {
+  font-weight: 500;
+}
+h5, h6 {
+  font-weight: bold; 
+}
+h1 {
+  typeRhythm(4, 1, 2);
+}
+h2 {
+  typeRhythm(3,2,1);
+}
+h3 {
+  typeRhythm(2, 1, null);  
+}
+h4, dt {
+  // prop('margin', $baseGutter 0);
+  // heading($h4);
+  typeRhythm(1, 1, null);
+}
+dt {
+  margin-bottom: 0;
+}
+h5 {
+  // prop('margin', ($baseGutter / 2) 0 ($baseGutter / 2));
+  // heading($h5);
+  typeRhythm(0, 1, null);
+}
+h6 {
+  typeRhythm(-1, 1, null);
+}
+
+// Paragraphs and Lists
+p {
+  margin: 0;
+  + p {
+    prop('margin-top', $baseGutter);
+  }
+}
+
+dl {
+  dt {
+    heading($h3);
+  }
+  dd {
+    prop('margin-top', $baseGutter);
+  }
+}
+ul, ol {
+  prop('margin', $baseGutter 0 0);
+  prop('padding-left', ($baseGutter * 1.5));
+}
+ul {
+  &.no-bullet {
+    list-style: none;
+  }
+}
+ol {
+
+}
+li {
+
+}
+
+// Links
+a {
+  color: $link;
+  text-decoration: none;
+}
+a:link {
+  prop('border-bottom', 1px, solid $link);
+}
+a:hover {
+  color: $linkHover;
+  border-bottom-color: $linkHover;
+}
+a:active {
+  color: $linkActive;
+  border-bottom-color: $linkActive;
+}
+a:focus {
+  outline: none;
+  background: $linkHover;
+  color: $darkGrey;
+  border-bottom-color: $linkFocus;
+}
+a:visited {
+  color: $linkVisited;
+}
+
+// Misc Elements
+dfn {
+  prop(border, 1px, dotted);
+  border-radius(3px);
+}
+
+ins {
+  // removing text-decoration; too close to link styling
+  text-decoration: none;
+
+  &:before{
+    content: '\BB';
+  }
+}
+
+code {
+  display: inline-block;
+  prop('padding', 0 6px);
+  background: $textInverted;
+  borderRadius(3px);
+  vertical-align: top;
+}
+
+pre {
+  overflow: auto;
+  max-width: 100%;
+  prop(margin, $baseGutter 0);
+  prop(border, 1px, solid $grey);
+  borderRadius(3px);
+  background-color: $lightGrey;
+  background-image: linear-gradient(top, transparent 50%, $textInverted 50%, $textInverted, only: webkit moz official);
+  background-repeat: repeat-y;
+  backgroundSize(100% $baseGutter * 2);
+  
+  // Adds a 'caption' of sorts to the top of the pre box
+  &[data-caption] {
+    position: relative;
+    prop(padding-top, $baseGutter * 2);
+    
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: $grey;
+      prop(padding, $baseGutter / 2);
+      font-family: $helvetica;
+      font-weight: bold;
+      content: attr(data-caption);
+    }
+  }
+  code {
+    padding: 0;
+    border: none;
+    background: none;
+  }
+}
+
+blockquote {
+  prop('margin', $baseGutter 0 0)
+  prop('border-left', 9px, solid);
+  prop('padding',$baseGutter $baseGutter $baseGutter ($baseGutter * 2));
+}
+
+
+
+
+
+
+
