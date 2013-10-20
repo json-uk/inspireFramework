@@ -1,4 +1,4 @@
-inspireGrid
+inspireFramework
 ===========
 
-Prototype CSS grid framework developed in Stylus
+Yet another CSS framework, yet this one is developed in Stylus
