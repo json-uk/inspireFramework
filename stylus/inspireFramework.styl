@@ -1,25 +1,27 @@
 @charset "UTF-8";
 // InspiredGrid 
-@import "_reset";
-@import "_settings";
-@import "_utility";
-@import "_base_mixins";
-@import "_vendor_mixins";
-@import "_icons";
+@import "base/reset";
+@import "config/settings";
+@import "mixins/utility";
+@import "mixins/base_mixins";
+@import "mixins/vendor_mixins";
 // @import Stylus Nib; documentation is not complete
 @import "nib/gradients";
 @import "nib/vendor";
 
 // Grid 
-@import "grid";
+@import "base/grid";
 
 // Themes
-@import "themes/_basic";
+@import "themes/basic";
 
 // Optional Imports
 // ==========================
-@import "typography";
-@import "forms";
+@import "base/typography";
+@import "base/forms";
+
+// Icons
+@import "base/icons";
 
 // Components
 // =================================================

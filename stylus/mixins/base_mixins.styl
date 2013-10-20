@@ -137,6 +137,12 @@ lineHeight(size = $baseFontSize, strOnly = false) {
 // COLUMN, PUSH AND PULL MIXINS
 // ================================================================================
 
+// Layout Variables
+$phoneMax = unit((539 / remove-unit($baseFontContext)),'em');
+$tabletMin = unit((540 / remove-unit($baseFontContext)),'em');
+$tabletMax = unit((800 / remove-unit($baseFontContext)),'em');
+$desktopMin = unit((960 / remove-unit($baseFontContext)),'em');
+
 
 // Column
 // @param count: 1[-11], Number of columns to span
