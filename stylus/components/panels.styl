@@ -1,0 +1,56 @@
+// ====
+// Panels
+// ================================================================================
+.panel {
+  // Transparent border for use with the 'bordered' utility
+  borderRadius($baseGutter / 6);
+  prop('border', 1px, solid transparent);
+  modulePadding($baseGutter - 1);
+  background: $panelBg;
+  
+  .panel-header {
+    prop('margin-top', -($baseGutter / 2));
+    prop('margin-bottom', $baseGutter - 1);
+    prop('border-bottom',1px,solid $panelHeadBorder);
+    prop('padding-bottom', $baseGutter / 2);
+    * {margin: 0;}
+  }
+
+  .panel-footer {
+    position: relative;
+    prop('margin-top', $baseGutter - 1);
+    prop('margin-bottom', -($baseGutter / 2));
+    prop('border-top', 1px, solid $panelFootBorder);    
+    prop('padding-top', $baseGutter / 2);
+  }
+
+  // Panel Utility Classes
+  // =================================================
+  &.inset {
+    boxShadow(inset 0 1px 1px 0 $mediumGrey);
+    background: $panelInsetBg;
+
+  }
+  &.bordered {
+    border-color: $panelBorder;  
+  }
+  &.raised {
+    prop('border-bottom-color', $panelRaisedBorder); 
+    boxShadow(0 2px 0 0 $panelRaisedBorder); 
+  }
+}
+.panel + .panel {
+  prop('margin-top',$baseGutter);
+  
+}
+
+
+// Notification Panels
+// =================================================
+.notification-panel {
+  
+  // &.is_
+  // &.is_info {}
+  // &.is_alert {}
+}
+

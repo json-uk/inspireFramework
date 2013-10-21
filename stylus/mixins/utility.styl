@@ -1,0 +1,87 @@
+//
+// Base Utility Functions 
+//
+// ============================================
+
+// Modular Scale
+rhythm(scale) {
+  if (scale == 0) {
+    return $baseFontSize
+  }else{
+    if (font-scale < 0) {
+      return round(($baseFontSize / $lineHeightRatio) * ($lineHeightRatio / scale))
+    }else{
+      return round($baseFontSize * ($lineHeightRatio ** scale))
+    }
+  }
+}
+
+// Shamelessly copied from: https://github.com/sevenupcan/gridlover-mixin/blob/master/stylus/rhythm.styl
+// Modifid in order to return rem units and unitless line-heights
+// 
+// How to use:
+// typeRhythm(1,1,0)
+// @param font-scale: negative and positive numbers, calculates multipes of font-size
+// @param margin-before: adds margin-top in multiples of line-height
+// @param margin-after: adds margin-bottom in multiples of baseLineHeight
+typeRhythm(font-scale, margin-before = null, margin-after = null)
+  if font-scale == 0 and margin-before == null and margin-after == null
+    fontSize($baseFontSize)
+    line-height remove-unit(($baseFontSize * $lineHeightRatio))
+  else
+    if font-scale == 0
+      fontSize($baseFontSize)
+      line-height remove-unit($baseFontSize * $lineHeightRatio) / $baseFontSize;
+    else
+      fontSize(new-font-size = round($baseFontSize * ($scaleFactor ** font-scale)))
+      line-height remove-unit((ceil((new-font-size / ($lineHeightRatio * $baseFontSize))) * ($lineHeightRatio * $baseFontSize)) / new-font-size)
+    
+    if margin-before  > 0 
+      prop('margin-top', ($baseFontSize * ($lineHeightRatio * margin-before)));
+    
+    if margin-after > 0 
+      prop('margin-bottom', $baseFontSize * ($lineHeightRatio * margin-after))
+    else
+      margin-bottom: 0;
+
+
+// Vendor Prefix functions
+vendorProp(prop, args, prefixes = null) {
+    -webkit-{prop}:{args};
+    -ms-{prop}:{args};
+    -moz-{prop}:{args};
+    {prop}:{args};  
+}
+
+// Join function; used in _base_mixins
+argJoin(delim, args) {
+  string = ''
+  for arg in args {
+    if arg is a 'unit' and arg >= 1 {
+      unit(arg) is 'px' ? string += delim + unit((remove-unit(arg) / $baseFontContext),rem) : string += delim + arg
+    }else{
+      string += delim + arg
+    }
+  } 
+}
+
+// Taken from Nib; modified to calculate rems
+// =================================================
+vendorCalc(prop, args, only = null, ignore = null, vendor-property = true)
+  need_normalize = !vendor-property or prop in ('transition' 'transition-property' 'border-image' 'border-image-slice')
+  for prefix in vendor-prefixes
+    unless (only and !(prefix in only)) or (ignore and prefix in ignore)
+      if official == prefix
+        if need_normalize
+          {prop}: normalize(prop,('%s' % args))
+        else
+          {prop}:unquote(argJoin(' ',args))
+      else
+        newprop = prop
+        newprop = '-' + prefix + '-' + prop if vendor-property
+
+        if need_normalize
+          {newprop}: normalize(prop,('%s' % args),prefix)
+        else
+          {newprop}:unquote(argJoin(' ',args))
+    

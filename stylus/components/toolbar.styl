@@ -1,0 +1,38 @@
+// ====
+// Toolbar
+// ================================================================================
+
+.toolbar {
+	display: inline-block;
+	position: relative;
+	prop('margin',$baseGutter - 2 0 12px);
+	prop('border',1px,solid);
+
+	.toolbar-button {
+		white-space: nowrap;
+		display: table-cell;
+		margin-top: 0;
+
+		& + .toolbar-button {
+			prop('border-left', 1px solid);
+		}
+	}
+	.toolbar-button-label {
+		display: block;
+		prop('padding',5px 12px);
+	}
+
+}
+
+.toolbar-button {
+
+	input:checked ~ .toolbar-button-label {
+		background: purple;
+	}
+
+	&.has_menu {
+		input:checked ~ .toolbar-button-label ~ .menu {
+			@extend .active + .menu;
+		}
+	}
+}

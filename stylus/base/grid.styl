@@ -1,0 +1,70 @@
+// Add the box-sizing magic!
+// 
+// Not compatible with IE7
+@css {
+  /* Have to wrap in @css var; stylus ignores universal selector :( */
+  *, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    /* Uncomment to support IE7 */
+    /* *behavior: url(/stylus/boxsizing.htc);*/
+  }
+}
+
+// Clearfix 
+.cf {
+  clearfix();
+}
+// Grid and Layout Styles
+.col {
+  display: inline-block;
+  if ($old-ie) {
+    *display: inline;
+    zoom: 1;
+  }
+  if $gridType == 'mobileFirst' {
+    width: 100%;
+  }
+  prop('border-left', $baseGutter, solid transparent);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-align: left;
+  vertical-align: top;
+}
+.wrapper, .row {
+  width: 100%;
+}
+// Wrapper container
+.wrapper {
+  if $gridType == 'fixed' {
+    width: unit($gridEmsWidth, 'px');
+  }else{
+    width: 100%;
+    max-width: $gridEmsWidthEms;
+  }
+  prop('margin-right', auto);
+  prop('margin-left', auto);
+  prop('padding-right',$baseGutter);
+  prop('padding-left',$baseGutter);
+
+}
+// Row wrapping container
+.row {
+  prop('padding-right', $baseGutter);
+  text-align: justify;
+  letter-spacing:-2px;
+  word-spacing:-2px;
+}
+// Grid Utility Classes
+// =================================================
+
+// Column Nesting
+.has_nested_cols {
+  prop('margin-left', -($baseGutter));
+
+  .col {
+    width: auto;
+  }
+}

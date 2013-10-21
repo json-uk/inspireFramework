@@ -1,0 +1,271 @@
+// Forms
+//
+// ============================================
+
+// Basic Element Styles
+fieldset {
+  position: relative;
+  margin: 0;
+  border: none;
+  padding: 0;  
+}
+.field-group  + .field-group {
+  prop(margin-top, $baseGutter / 2);
+}
+legend {
+  heading($h4);
+  prop(padding, ($baseGutter / 2) 0 ($baseGutter / 2));
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+.group-title {
+  heading($h5);
+}
+
+label {
+  display: block;
+  position: relative;
+  prop(margin-bottom, $baseGutter / 2);
+  
+  .label-text {
+    display: block;
+  }
+}
+
+// Form Utility Classes
+.reset-appearance {
+  // mixin sets appearance to textfield
+  appearance(none);
+}
+.is_inline label {display: inline-block;}
+
+.inline-button {
+  prop('margin-top', $baseGutter / 2);  
+}
+
+// Input Specific Styles
+input, select, textarea {
+  width: 100%;
+  prop(border, 1px, solid);
+  borderRadius(0);
+  prop(padding, 5px ($baseGutter / 2));
+  line-height: inherit;
+}
+input[type="date"],
+input[type="time"],
+input[type="number"] {
+  &::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+  }
+  &::-webkit-inner-spin-button { 
+    display: none;
+    @extend .reset-appearance;
+  }
+}
+input[type="range"] {
+  prop('margin-top', 2px);
+}
+input[type="search"] {
+  boxSizing();
+}
+
+// Sets vertical 
+textarea {
+  prop(min-height, ($baseGutter * 4));
+  prop(padding, 2px ($baseGutter / 2));
+}
+
+input[type="radio"], input[type="checkbox"] {width: auto;}
+
+.label-text, input, textarea, 
+select, button, input[type="button"] {
+  cursor: pointer;
+}
+
+// Selects and Datalists
+// =================================================
+
+// adds hook for -webkit- overrides below
+.select-label:before {display: none;}
+
+// Custom -webkit- Select Styles
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .select-label select {
+      -webkit-appearance: none;
+      prop('padding-right',$baseGutter * 1.5);
+  }
+  .select-label:before {
+    z-index: 1;
+    display: block;
+    position: absolute;
+    right: 0;
+    prop(top, 30px);
+    prop('width',$baseGutter * 1.25);
+    line-height: inherit;
+    pointer-events: none;
+    text-align: center;
+  }
+
+  .has_hidden_label, .has_inline_label {
+    .select-label:before {
+      prop(top, 6px);
+    }    
+  }
+}
+
+// Radio and Checkbox Groups
+// =================================================
+.has_radio,
+.has_checkbox {
+  .label-text {
+    display: inline-block;
+  }
+  
+
+  &.is_inline label {
+    prop(padding-right, ($baseGutter / 2));  
+
+    & + label {margin-top: 0;}
+  }   
+}
+
+// Checkboxes
+.field-group.has_checkbox {
+    .label-text {
+      prop(margin-left, round($baseGutter / 1.3));
+    }
+    
+    input[type="checkbox"] {
+      position: absolute;
+      prop(top, 4px);
+    }
+}
+
+// Inline Inputs 
+// =================================================
+.has_inline_label {
+  .label-text {
+    width: 25%; 
+    prop('padding',3px 6px 9px 0); 
+    text-align: right;
+  }
+
+  input, 
+  select, 
+  textarea {
+    position: absolute;
+    top: 0;
+    right: 0;
+    prop('left',25%);
+    width: auto;
+  }
+  
+  .has_textarea {
+    prop('height', $baseGutter * 4);
+  }
+}
+
+// Adjoined input
+// =================================================
+.adjoined-label {
+  overflow: hidden;
+
+
+  .label-text{
+    display: inline-block;
+    prop('width',$baseGutter * 1.5);
+    prop('min-height', $baseGutter * 1.5);
+    //prop('border', 1px, solid $text);
+    prop('padding-top',3px);
+    //background: $grey;
+    color: $text;
+    line-height: inherit;
+    text-align: center;
+    cursor: pointer;
+    
+    &.is_prepended {
+      float: left;
+      border-right: none;
+    }
+    &.is_appended {
+      float: right;
+      border-left: none;
+    }
+  }
+  input {
+    position: absolute;
+    top: 0;
+    width: auto;
+  }
+  .is_prepended + input {
+    prop(left, $baseGutter * 1.5);
+    right: 0;   
+  }
+  .is_appended + input {
+    left: 0;
+    prop(right, $baseGutter * 1.5);
+  }
+
+}
+
+// Inline Buttons
+// =================================================
+.has_inline_button {
+  prop('padding-right', ($baseGutter * 2.25));
+  button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+
+// Buttons
+// =================================================
+button {
+  margin: 0;
+  prop('border', $buttonBorderWidth, solid);
+  borderRadius($globalBorderRadius);
+  prop('padding', (($baseGutter / 2) - 1) ($baseGutter - 1));
+  fontSize(rhythm(1), true);
+  vertical-align: middle;
+  cursor: pointer;
+  & + button {
+    prop('margin-left', $baseGutter);
+  }
+}
+
+button[type="submit"] {
+
+}
+
+// Button Sizes
+.button-med {
+  prop('padding', (($baseGutter / 4) - 1) ($baseGutter / 2) - 1);
+  fontSize(rhythm(0), true);
+}
+.button-small {
+  prop('padding', 2px ($baseGutter / 4) - 1);  
+  fontSize(rhythm(0), true);
+}
+
+// Field :focus and other states
+// =================================================
+input:focus {
+  outline: none;
+  prop('border-color', $linkFocus);
+  boxShadow(inset 0 0 2px $linkFocus);
+}
+
+// Disabled controls
+input:disabled, button:disabled, 
+input[type="button"]:disabled,
+input:disabled + span {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: .5;
+}
+
+
+
