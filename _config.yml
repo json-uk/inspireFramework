@@ -1,0 +1,4 @@
+baseurl:  /inspireFramework
+excerpt_separator: ""
+pygments: true
+markdown: maruku
