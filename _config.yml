@@ -1,7 +1,12 @@
 baseurl:  /inspireFramework
+relative_permalinks: false
 excerpt_separator: ""
 pygments: true
 markdown: maruku
 
+#
+# Site-Specific Settings  
+#
 name: "inspireFramework"
-description: ""
+tagline: For Building Awesome Sites!
+description: ''

@@ -1,6 +1,6 @@
   <head>
     <meta charset="UTF-8">
-    <title>{{ page.title }}</title>
+    <title>{{ page.title }}{% if page.category != 'home' %} &gt; {{ page.category | capitalize }} - {{ site.name }}{% else %} - {{ site.tagline }}{% endif %}</title>
     
     <meta name="description" content="">
     <meta name="author" content="Jason Chandler, DTI Graphics">

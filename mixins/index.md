@@ -1,4 +1,6 @@
 ---
+
+title: Mixins
 layout: default
-title: About the Grid
+
 ---
