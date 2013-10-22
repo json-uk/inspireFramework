@@ -1,4 +1,11 @@
-.highlight { background-color: #49483e }
+.lineno {
+  display: inline-block;
+  prop(width, $baseGutter * 1.5);
+  prop(border-right, 1px, solid);
+  prop(padding-left, ($baseGutter / 2));
+  background: $lightGrey;
+  white-space: nowrap; 
+}
 .c { color: #75715e } /* Comment */
 .err { color: #960050; background-color: #1e0010 } /* Error */
 .k { color: #66d9ef } /* Keyword */

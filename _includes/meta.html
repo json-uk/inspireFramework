@@ -1,6 +1,6 @@
   <head>
     <meta charset="UTF-8">
-    <title>{{ page.title }}{% if page.category != 'home' %} &gt; {{ page.category | capitalize }} - {{ site.name }}{% else %} - {{ site.tagline }}{% endif %}</title>
+    <title>{% if page.category != 'home'%}{{ page.title }} &gt; {{ page.category | capitalize }} - {{ site.name }}{% else %}{{ site.name }} -  {{ site.tagline }}{% endif %}</title>
     
     <meta name="description" content="">
     <meta name="author" content="Jason Chandler, DTI Graphics">
@@ -12,6 +12,9 @@
     <meta http-equiv="cleartype" content="on">
 
     <link rel="stylesheet" href="{{ site.baseurl}}/css/site.css" />
+    {% if site.dev_mode == 'true' %}
+        <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+    {% endif %}
   </head>
 
   

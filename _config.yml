@@ -1,5 +1,6 @@
 baseurl:  /inspireFramework
-relative_permalinks: false
+relative_permalinks: true
+permalink: name
 excerpt_separator: ""
 pygments: true
 markdown: maruku

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+{% include meta.html %}
+  <body class="layout-{{ page.layout }}">
+  {% include header.html %}
+    <div class="wrapper"> 
+      <main role="main">
+        <h2>{{ page.title }}</h2>
+        {{ content }} 
+      </main> 
+      <aside role="complementary">
+        <dl class="section-nav">
+          <dt>More About {{ page.category | capitalize }}</dt>
+          <dd>
+            {% assign pages_list = site.pages %}
+            {% assign group = page.category %}
+            {% include page_listing.html %}
+          </dd>
+        </dl>
+        <hr />
+      </aside>
+    </div>
+  {% include footer.html %}
+  </body>
+</html>

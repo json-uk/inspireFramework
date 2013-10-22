@@ -1,6 +1,0 @@
----
-
-title: Mixins
-layout: default
-
----
