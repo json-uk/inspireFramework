@@ -2,10 +2,13 @@
     <div class="wrapper">
       <p>This is the footer</p>
       <ul>
-        {% assign sorted_pages = site.pages | sort:"name" %}
-        {% for node in sorted_pages %}
+        {% assign footer_pages = site.pages | sort:"name" %}
+        {% for node in footer_pages %}
+          {% if node.nav_group contains 'footer' %}
           <li><a href="{{node.url}}">{{node.title}}</a></li>
+          {% endif %}
         {% endfor %}
       </ul>
     </div>
   </footer>
+</body>

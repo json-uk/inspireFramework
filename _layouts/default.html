@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="en">
-{% include meta.html %}
-  <body class="layout-default">
-  {% include header.html %}
+  {% include meta.html %}
+  <body class="layout-{{ page.layout }}{% if page.classes %} {{ page.classes }}{% endif %}">
+    {% include header.html %}
     <div class="wrapper"> 
-      <main role="main">
+      <main role="main" id="mainContent">
         <h2>{{ page.title }}</h2>
         {{ content }} 
-      </main>      
+      </main> 
+      {% if page.include_aside == true %}{% include aside.html %}{% endif %}     
     </div>
   {% include footer.html %}
   </body>

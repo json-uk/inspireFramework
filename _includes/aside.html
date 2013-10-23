@@ -1,0 +1,11 @@
+<aside role="complementary">
+  <dl class="section-nav">
+    <dt>Browse {{ page.category | capitalize }}</dt>
+    <dd>
+      {% assign pages_list = site.pages %}
+      {% assign group = page.category %}
+      {% include page_listing.html %}
+    </dd>
+  </dl>
+  <hr />
+</aside>

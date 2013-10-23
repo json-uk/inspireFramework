@@ -1,20 +1,82 @@
 // ====
-// Site Styles
+// DOCUMENTATION
 // ================================================================================
-
-// Get Framework
 @import "../stylus/inspireFramework";
+// Code Highlighting
+@import "syntax";
+// @media query variables
+$lessThanTablet = "screen and (max-width: " + unit(800 / 16, em) + ")";
+
 
 
 // ====
-// Main Layout
+// HEADER
 // ================================================================================
-main {
-  column(8);
-  margin: 0 auto;
+header[role="banner"] {
+  prop(padding, $baseGutter / 2 0);
+}  
+// Brand
+.site-brand {
+  position: absolute;
+  typeRhythm(1);  
+
+}
+// Navigation
+.site-nav {
+  
+  
+  // Hide .nav-toggle
+  .nav-toggle {
+    display: none;
+    position: absolute;
+    prop(right, $baseGutter);
+    
+    + input {position: absolute;}
+  }
+
+  @media $lessThanTablet {
+    .nav-toggle {display: block;} 
+    .nav-tabs {
+      display: none;
+    }
+    #nav-toggle-trigger:checked + .nav-tabs {display: block}
+  }  
+}
+.nav-tabs {
+  margin-top: 0;
+  list-style: none;
+  vertical-align: middle;
+  text-align: right;
+
+  .tab {
+    display: inline-block;
+
+    a {
+      display: block;
+      border: none;
+      prop(padding, ($baseGutter / 4) ($baseGutter / 2))
+    }
+  }
 }
 
+
 // ====
-// Code Highlighting
+// LAYOUTS
 // ================================================================================
-@import "syntax";
+  
+  
+
+// ====
+// @MEDIA QUERIES
+// ================================================================================
+
+
+// ====
+// NO-MEDIA QUERY SUPPORT
+// ================================================================================
+.no-mediaqueries {
+
+}
+// ====
+// @MEDIA PRINT
+// ================================================================================

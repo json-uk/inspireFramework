@@ -1,9 +1,18 @@
 ---
 
-layout: default
+# meta
 title: Home
-category: home
+description: 
+# nav
+# category: home
+nav_group: header footer
 permalink: index.html
+# layout
+layout: default
+include_aside: false
+# uncomment to add custom classes
+# classes: ''
+#
 
 ---
 

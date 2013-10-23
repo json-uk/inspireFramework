@@ -1,9 +1,23 @@
   <header role="banner">
     <div class="wrapper">
-      <a href="{{ root_path }}/" class="logo">{{ site.name }}</a>
+      <a href="{{ root_path }}/" class="site-brand">{{ site.name }}</a>
+  
+      <a href="#mainContent" class="visuallyhidden">Skip to Content</a>
+      <nav class="site-nav">
+        <label for="nav-toggle-trigger" role="button" class="nav-toggle" data-icon="expand">Menu</label>
+        <input type="checkbox" class="invisible" id="nav-toggle-trigger" checked />
+        <ul class="nav-tabs" role="navigation">
+        {% assign footer_pages = site.pages | sort:"name" %}
+        {% for node in footer_pages %}
+          {% if node.nav_group contains 'header' %}
+          <li class="tab"><a href="{{node.url}}"{% if page.url == node.url %} class="is_current"{% endif %}>{{node.title}}</a></li>
+          {% endif %}
+        {% endfor %}
+        <li class="tab"><a href="">Download</a></li>
+<!--           <li class="tab"><a href="{{ root_path }}/">Home</a></li>
+          <li class="tab"><a href="{{ root_path }}/features.html">Features</a></li>
+          <li class="tab"><a href="{{ root_path }}getting-started.html">Docs</a></li>
+ -->        </ul>
+      </nav>
     </div>
-    <nav class="site-nav" role="navigation">
-      <ul class="menu">
-      </ul>
-    </nav>
   </header>
