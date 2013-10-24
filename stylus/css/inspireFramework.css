@@ -366,24 +366,19 @@ ul.no-bullet {
 }
 a {
   color: #2e6dcb;
-  text-decoration: none;
-}
-a:link {
-  border-bottom: 0.0625rem solid #2e6dcb;
+  text-decoration: underline;
 }
 a:hover {
   color: #3682f2;
-  border-bottom-color: #3682f2;
+  text-decoration: none;
 }
 a:active {
   color: #2559a5;
-  border-bottom-color: #2559a5;
 }
 a:focus {
   outline: none;
   background: #3682f2;
   color: #474747;
-  border-bottom-color: #3682f2;
 }
 a:visited {
   color: #1c4861;
