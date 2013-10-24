@@ -5,7 +5,7 @@
 // Code Highlighting
 @import "syntax";
 // @media query variables
-$lessThanTablet = "screen and (max-width: " + unit(800 / 16, em) + ")";
+$lessThanTablet = "screen and (max-width: " + unit(700 / 16, em) + ")";
 
 
 
@@ -18,7 +18,8 @@ header[role="banner"] {
 // Brand
 .site-brand {
   position: absolute;
-  typeRhythm(1);  
+  typeRhythm(1); 
+  border-bottom: none; 
 
 }
 // Navigation
@@ -30,6 +31,7 @@ header[role="banner"] {
     display: none;
     position: absolute;
     prop(right, $baseGutter);
+    cursor: pointer;
     
     + input {position: absolute;}
   }
@@ -53,7 +55,7 @@ header[role="banner"] {
 
     a {
       display: block;
-      border: none;
+      prop(border, 1px, solid $link);
       prop(padding, ($baseGutter / 4) ($baseGutter / 2))
     }
   }
