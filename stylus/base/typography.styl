@@ -80,24 +80,22 @@ li {
 // Links
 a {
   color: $link;
-  text-decoration: none;
+  text-decoration: underline;
 }
-a:link {
-  prop('border-bottom', 1px, solid $link);
-}
+// a:link {
+
+// }
 a:hover {
   color: $linkHover;
-  border-bottom-color: $linkHover;
+  text-decoration: none;
 }
 a:active {
   color: $linkActive;
-  border-bottom-color: $linkActive;
 }
 a:focus {
   outline: none;
   background: $linkHover;
   color: $darkGrey;
-  border-bottom-color: $linkFocus;
 }
 a:visited {
   color: $linkVisited;
