@@ -26,6 +26,8 @@
   }
   if $gridType == 'mobileFirst' {
     width: 100%;
+  }else{
+    width: auto;
   }
   prop('border-left', $baseGutter, solid transparent);
   letter-spacing: normal;
@@ -40,6 +42,9 @@
 .wrapper {
   if $gridType == 'fixed' {
     width: unit($gridEmsWidth, 'px');
+  }else if $gridType == 'fluid' {
+    min-width: $gridMinWidthEms;
+    max-width: $gridEmsWidth;
   }else{
     width: 100%;
     max-width: $gridEmsWidthEms;
@@ -63,8 +68,4 @@
 // Column Nesting
 .has_nested_cols {
   prop('margin-left', -($baseGutter));
-
-  .col {
-    width: auto;
-  }
 }

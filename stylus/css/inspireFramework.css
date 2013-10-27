@@ -272,24 +272,10 @@ td {
 .has_nested_cols {
   margin-left: -24px;
 }
-.has_nested_cols .col {
-  width: auto;
-}
 html {
   font-size: 100%;
 }
 body {
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.01, #f0c), color-stop(0.01, transparent));
-  background-image: -webkit-linear-gradient(top, #f0c 1px, transparent 1px);
-  background-image: -moz-linear-gradient(top, #f0c 1px, transparent 1px);
-  background-image: -ms-linear-gradient(top, #f0c 1px, transparent 1px);
-  background-image: linear-gradient(top, #f0c 1px, transparent 1px);
-  background-repeat: repeat-y;
-  -webkit-background-size: 100% 1.5rem;
-  -moz-background-size: 100% 1.5rem;
-  -webkit-background-size: 100% 1.5rem;
-  -moz-background-size: 100% 1.5rem;
-  background-size: 100% 1.5rem;
   font: normal 1rem/1.5 Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #1b1b1b;
 }
@@ -417,6 +403,7 @@ pre {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, transparent), color-stop(0.5, #e4e4e4), color-stop(1, #e4e4e4));
   background-image: -webkit-linear-gradient(top, transparent 50%, #e4e4e4 50%, #e4e4e4 100%);
   background-image: -moz-linear-gradient(top, transparent 50%, #e4e4e4 50%, #e4e4e4 100%);
+  background-image: -o-linear-gradient(top, transparent 50%, #e4e4e4 50%, #e4e4e4 100%);
   background-image: -ms-linear-gradient(top, transparent 50%, #e4e4e4 50%, #e4e4e4 100%);
   background-image: linear-gradient(top, transparent 50%, #e4e4e4 50%, #e4e4e4 100%);
   background-repeat: repeat-y;
@@ -521,6 +508,7 @@ input[type="range"] {
 input[type="search"] {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
   -ms-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
