@@ -1,29 +1,64 @@
 // ====
-// MAIN SETTINGS
+// GLOBAL SETTINGS
 // ================================================================================
+
 
 // Dev Mode; set to false to remove lines
 // =================================================
 $dev-mode = false;
 
-// Browser Default Font Size == 16px
-$baseFontContext = 16px;
-// end 
+// @param $dev-mode boolean, false|true
+// value of true adds baseline grid lines
+$dev-mode = false;
+//
+// @param $old-ie boolean, false|true
+// Setting this to false removes IE < 9 fallbacks for some mixins
+$old-ie ?= false;
+//
+// @param $vendor-prefixes String
+// Used by Nib and custom mixins, outputs these vendor prefixes
+$vendor-prefixes ?= webkit moz ms official
 
+
+// ====
+// TYPE SETTINGS
+// These params based on http://www.gridlover.net/ for vertical rhythm
+// ================================================================================
+//
+// DO NOT CHANGE
+$baseFontContext = 16px;
+//
+// @param $baseFontSize unit
+// Default typography font size 
 $baseFontSize = 16px;
+//
+// @param $baseFontPercentage 
+// Sets body font size percentage
 $baseFontPercentage = unit($baseFontSize / $baseFontContext * 100, '%');
+//
+// @param $lineHeightRatio integer
+// Change this to change the line-height multiplier
 $lineHeightRatio = 1.5;
+//
+// @param $scaleFactor integer
+// Set to golden ratio
 $scaleFactor = 1.618;
+//
+// DO NOT CHANGE
 $baseLineHeight = ceil((remove-unit($baseFontSize) * $lineHeightRatio));
 $baseGutter = unit($baseLineHeight,'px');
-// end
 
 // Base Grid Settings
-// Change these settings to setup your grid
+// Min and Max widths for the grid
 $gridMinWidth = 960;
 $gridMaxWidth = 1240;
-$gridMinWidthEms = unit($gridMinWidth / $baseFontSize, 'em');
+// DO NOT CHANGE THESE
+// Used to set em values based on the above
+$gridEmsMinWidth = unit($gridMinWidth / $baseFontSize, 'em');
 $gridEmsWidthEms = unit($gridMaxWidth / $baseFontSize, 'em');
+// END
+//
+// Total number of columns
 $colsTotal = 12;
 // From the article here: http://tylertate.com/blog/2012/01/05/subpixel-rounding.html
 $subPixelCorrection = (0.5 / unit($gridMinWidth,'px')) * 100 * 1%;
@@ -32,13 +67,6 @@ $subPixelCorrection = (0.5 / unit($gridMinWidth,'px')) * 100 * 1%;
 // Set grid type
 // @param $gridType: fluid[, fixed, mobileFirst]
 $gridType = mobileFirst;
-
-// Setting this to false removes old IE fallbacks
-$old-ie ?= true;
-
-// List of prefixes to include
-// Used by Nib
-vendor-prefixes ?= webkit moz ms official
 
 // Colour Palettes
 // types: monocromatic, analogous, complimentary, triad

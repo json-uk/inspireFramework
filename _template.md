@@ -18,6 +18,7 @@ include_aside: false
 # adds custom classes to body
 # string should be space-delimited
 classes:
-
+# page heading
+page_heading: 
 
 ---
