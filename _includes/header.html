@@ -1,11 +1,11 @@
   <header role="banner">
     <div class="wrapper">
-      <a href="{{ root_path }}/" class="site-brand">{{ site.name }}</a>
+      <a href="{{ root_path }}/" class="site-brand"><span class="site-name">{{ site.name }}</span></a>
   
       <a href="#mainContent" class="visuallyhidden">Skip to Content</a>
       <nav class="site-nav">
+        <input type="checkbox" class="toggle-control invisible" id="nav-toggle-trigger" />
         <label for="nav-toggle-trigger" role="button" class="nav-toggle" data-icon="expand">Menu</label>
-        <input type="checkbox" class="invisible" id="nav-toggle-trigger" />
         <ul class="nav-tabs" role="navigation">
         {% assign footer_pages = site.pages | sort:"name" %}
         {% for node in footer_pages %}

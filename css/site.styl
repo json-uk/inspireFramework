@@ -8,58 +8,74 @@
 $lessThanTablet = "screen and (max-width: " + unit(700 / 16, em) + ")";
 
 
-
 // ====
 // HEADER
 // ================================================================================
 header[role="banner"] {
   prop(padding, $baseGutter / 2 0);
+  .wrapper {
+    position: relative;
+  }
+
+  a {text-decoration: none;}
 }  
 // Brand
 .site-brand {
-  position: absolute;
+  display: block;
   typeRhythm(1); 
-  border-bottom: none; 
-
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
 }
 // Navigation
 .site-nav {
   
-  
-  // Hide .nav-toggle
-  .nav-toggle {
-    display: none;
-    position: absolute;
-    prop(right, $baseGutter);
-    cursor: pointer;
-    
-    + input {position: absolute;}
-  }
-
-  @media $lessThanTablet {
-    .nav-toggle {display: block;} 
-    .nav-tabs {
-      display: none;
-    }
-    #nav-toggle-trigger:checked + .nav-tabs {display: block}
-  }  
 }
 .nav-tabs {
   margin-top: 0;
+  padding: 0;
   list-style: none;
   vertical-align: middle;
-  text-align: right;
+  text-align: center;
 
   .tab {
-    display: inline-block;
+    display: block;
 
     a {
       display: block;
-      prop(border, 1px, solid $link);
-      prop(padding, ($baseGutter / 4) ($baseGutter / 2))
     }
   }
 }
+// Hide .nav-toggle
+.nav-toggle {
+  display: none;
+  width: auto;
+  cursor: pointer;
+}
+.toggle-control {position: absolute;}
+
+@media $lessThanTablet {
+  // .nav-toggle {display: block;} 
+  // .nav-tabs {
+  //   position: absolute
+  //   right: 0;
+  //   height: 0;
+  //   width: 100%;
+  //   overflow: hidden;
+  //   opacity: 0;
+
+  //   .tab { display: block;}
+  //   .tab a {
+  //     border: none;
+  //     display: block;
+  //   }
+  // }
+  // #nav-toggle-trigger:checked + .nav-toggle + .nav-tabs {
+  //   opacity: 1;
+  //   height: auto;    
+  // }
+}  
+
 
 
 // ====
