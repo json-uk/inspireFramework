@@ -21,6 +21,7 @@ classes:
 # Page heading
 page_heading: Getting Started
 
+
 ---
 
 Now you've read all about the great features in inspireFramework, let's dig in and get to work...

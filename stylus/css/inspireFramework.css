@@ -634,7 +634,7 @@ input[type="button"] {
 }
 button {
   margin: 0;
-  border: 0.0625rem solid;
+  border: 0.0625rem 0.0625rem 0.1875rem solid;
   -webkit-border-radius: 0.1875rem;
   -moz-border-radius: 0.1875rem;
   -webkit-border-radius: 0.1875rem;
