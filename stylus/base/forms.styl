@@ -47,10 +47,15 @@ label {
 // Input Specific Styles
 input, select, textarea {
   width: 100%;
-  prop(border, 1px, solid);
-  borderRadius(0);
-  prop(padding, 5px ($baseGutter / 2));
+  prop(border, $fieldBorderWidth, solid $fieldBorderColour);
+  borderRadius($globalBorderRadius);
+  prop(padding, (($baseGutter / 4) - $fieldBorderWidth) ($baseGutter / 2));
+  background: $fieldBackground;
   line-height: inherit;
+}
+input[type="radio"], input[type="checkbox"] {
+  boxShadow(none) !important;
+  background: none !important;
 }
 input[type="date"],
 input[type="time"],
@@ -174,37 +179,34 @@ select, button, input[type="button"] {
 
   .label-text{
     display: inline-block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
     prop('width',$baseGutter * 1.5);
+    height: 100%;
     prop('min-height', $baseGutter * 1.5);
     //prop('border', 1px, solid $text);
-    prop('padding-top',3px);
+    prop('padding',5px 0);
     //background: $grey;
     color: $text;
     line-height: inherit;
     text-align: center;
     cursor: pointer;
     
-    &.is_prepended {
-      float: left;
-      border-right: none;
-    }
-    &.is_appended {
-      float: right;
-      border-left: none;
-    }
   }
-  input {
-    position: absolute;
-    top: 0;
-    width: auto;
+  &.has_prepended_label {
+    prop(padding-left, $baseGutter * 1.5);
   }
-  .is_prepended + input {
-    prop(left, $baseGutter * 1.5);
-    right: 0;   
+  &.has_appended_label {
+    prop(padding-right, $baseGutter * 1.5);
   }
-  .is_appended + input {
+  &.has_prepended_label .label-text {
     left: 0;
-    prop(right, $baseGutter * 1.5);
+    border-right: none;
+  }
+  &.has_appended_label .label-text{
+    right: 0;
+    border-left: none;
   }
 
 }
@@ -225,7 +227,9 @@ select, button, input[type="button"] {
 // =================================================
 button {
   margin: 0;
-  prop('border', $buttonBorderWidth, solid);
+  border-style: solid;
+  border-color: darken($primaryAction,10%);
+  prop(border-width, $buttonBorderWidth);
   borderRadius($globalBorderRadius);
   prop('padding', (($baseGutter / 2) - 1) ($baseGutter - 1));
   fontSize(rhythm(1), true);
@@ -235,9 +239,19 @@ button {
     prop('margin-left', $baseGutter);
   }
 }
+// Colours
+button[type="submit"], .is_primary_action {
+  background: $primaryAction;
+  color: $primaryActionText;
 
-button[type="submit"] {
-
+}
+.no-touch button[type="submit"]:hover,
+.no-touch .is_primary_action:hover,
+button[type="submit"]:focus,
+.is_primary_action:focus {
+  outline: none;
+  border-bottom-color: darken($primaryAction,20%);
+  background: lighten($primaryAction,10%)
 }
 
 // Button Sizes
@@ -250,12 +264,21 @@ button[type="submit"] {
   fontSize(rhythm(0), true);
 }
 
-// Field :focus and other states
+// Button Styles
+// button.raised {
+
+// }
+// button.flat {}
+
+// Field/Button states
 // =================================================
-input:focus {
+// Hover + Focus
+.no-touch input:hover, .no-touch select:hover,
+.no-touch textarea:hover, select:focus, textarea:focus,
+input:focus:not([type="checkbox"]):not([type="radio"]) {
   outline: none;
-  prop('border-color', $linkFocus);
-  boxShadow(inset 0 0 2px $linkFocus);
+  prop('border-color', $fieldFocusBorderColour);
+  boxShadow(inset 3px 3px 0 0 $lightGrey);
 }
 
 // Disabled controls
@@ -267,5 +290,9 @@ input:disabled + span {
   opacity: .5;
 }
 
+// Utility States
+// .is_required {}
+// .is_valid, input:valid {}
+// .is_invalid {}
 
 

@@ -276,8 +276,9 @@ html {
   font-size: 100%;
 }
 body {
+  background: #f4f4f4;
   font: normal 1rem/1.5 Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #1b1b1b;
+  color: #0b0b0b;
 }
 h1,
 h2,
@@ -351,11 +352,11 @@ ul.no-bullet {
   list-style: none;
 }
 a {
-  color: #2e6dcb;
+  color: #34d1c6;
   text-decoration: underline;
 }
 a:hover {
-  color: #3682f2;
+  color: #d1348e;
   text-decoration: none;
 }
 a:active {
@@ -363,8 +364,8 @@ a:active {
 }
 a:focus {
   outline: none;
-  background: #3682f2;
-  color: #474747;
+  background: #d1348e;
+  color: #6d6d6d;
 }
 a:visited {
   color: #1c4861;
@@ -383,7 +384,7 @@ ins:before {
 code {
   display: inline-block;
   padding: 0 0.375rem;
-  background: #e4e4e4;
+  background: #f4f4f4;
   -webkit-border-radius: 0.1875rem;
   -moz-border-radius: 0.1875rem;
   -webkit-border-radius: 0.1875rem;
@@ -394,18 +395,18 @@ pre {
   overflow: auto;
   max-width: 100%;
   margin: 1.5rem 0;
-  border: 0.0625rem solid #999;
+  border: 0.0625rem solid #b7b7b7;
   -webkit-border-radius: 0.1875rem;
   -moz-border-radius: 0.1875rem;
   -webkit-border-radius: 0.1875rem;
   border-radius: 0.1875rem;
-  background-color: #f5f5f5;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, transparent), color-stop(0.5, #e4e4e4), color-stop(1, #e4e4e4));
-  background-image: -webkit-linear-gradient(top, transparent 50%, #e4e4e4 50%, #e4e4e4 100%);
-  background-image: -moz-linear-gradient(top, transparent 50%, #e4e4e4 50%, #e4e4e4 100%);
-  background-image: -o-linear-gradient(top, transparent 50%, #e4e4e4 50%, #e4e4e4 100%);
-  background-image: -ms-linear-gradient(top, transparent 50%, #e4e4e4 50%, #e4e4e4 100%);
-  background-image: linear-gradient(top, transparent 50%, #e4e4e4 50%, #e4e4e4 100%);
+  background-color: #f4f4f4;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, transparent), color-stop(0.5, #f4f4f4), color-stop(1, #f4f4f4));
+  background-image: -webkit-linear-gradient(top, transparent 50%, #f4f4f4 50%, #f4f4f4 100%);
+  background-image: -moz-linear-gradient(top, transparent 50%, #f4f4f4 50%, #f4f4f4 100%);
+  background-image: -o-linear-gradient(top, transparent 50%, #f4f4f4 50%, #f4f4f4 100%);
+  background-image: -ms-linear-gradient(top, transparent 50%, #f4f4f4 50%, #f4f4f4 100%);
+  background-image: linear-gradient(top, transparent 50%, #f4f4f4 50%, #f4f4f4 100%);
   background-repeat: repeat-y;
   -webkit-background-size: 100% 3rem;
   -moz-background-size: 100% 3rem;
@@ -422,7 +423,7 @@ pre[data-caption]:before {
   top: 0;
   left: 0;
   width: 100%;
-  background: #999;
+  background: #b7b7b7;
   padding: 0.75rem;
   font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: bold;
@@ -484,13 +485,21 @@ input,
 select,
 textarea {
   width: 100%;
-  border: 0.0625rem solid;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  -webkit-border-radius: 0;
-  border-radius: 0;
-  padding: 0.3125rem 0.75rem;
+  border: 0.125rem solid #b7b7b7;
+  -webkit-border-radius: 0.375rem;
+  -moz-border-radius: 0.375rem;
+  -webkit-border-radius: 0.375rem;
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  background: #fff;
   line-height: inherit;
+}
+input[type="radio"],
+input[type="checkbox"] {
+  -webkit-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background: none !important;
 }
 input[type="date"]::-webkit-datetime-edit-fields-wrapper,
 input[type="time"]::-webkit-datetime-edit-fields-wrapper,
@@ -595,34 +604,31 @@ input[type="button"] {
 }
 .adjoined-label .label-text {
   display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
   width: 2.25rem;
+  height: 100%;
   min-height: 2.25rem;
-  padding-top: 0.1875rem;
-  color: #1b1b1b;
+  padding: 0.3125rem 0;
+  color: #0b0b0b;
   line-height: inherit;
   text-align: center;
   cursor: pointer;
 }
-.adjoined-label .label-text.is_prepended {
-  float: left;
+.adjoined-label.has_prepended_label {
+  padding-left: 2.25rem;
+}
+.adjoined-label.has_appended_label {
+  padding-right: 2.25rem;
+}
+.adjoined-label.has_prepended_label .label-text {
+  left: 0;
   border-right: none;
 }
-.adjoined-label .label-text.is_appended {
-  float: right;
-  border-left: none;
-}
-.adjoined-label input {
-  position: absolute;
-  top: 0;
-  width: auto;
-}
-.adjoined-label .is_prepended + input {
-  left: 2.25rem;
+.adjoined-label.has_appended_label .label-text {
   right: 0;
-}
-.adjoined-label .is_appended + input {
-  left: 0;
-  right: 2.25rem;
+  border-left: none;
 }
 .has_inline_button {
   padding-right: 3.375rem;
@@ -634,11 +640,13 @@ input[type="button"] {
 }
 button {
   margin: 0;
-  border: 0.0625rem solid;
-  -webkit-border-radius: 0.1875rem;
-  -moz-border-radius: 0.1875rem;
-  -webkit-border-radius: 0.1875rem;
-  border-radius: 0.1875rem;
+  border-style: solid;
+  border-color: #2bc0b5;
+  border-width: 0 0 0.1875rem;
+  -webkit-border-radius: 0.375rem;
+  -moz-border-radius: 0.375rem;
+  -webkit-border-radius: 0.375rem;
+  border-radius: 0.375rem;
   padding: 0.6875rem 1.4375rem;
   font-size: 1.5rem;
   line-height: 1;
@@ -647,6 +655,19 @@ button {
 }
 button + button {
   margin-left: 1.5rem;
+}
+button[type="submit"],
+.is_primary_action {
+  background: #34d1c6;
+  color: #f4f4f4;
+}
+.no-touch button[type="submit"]:hover,
+.no-touch .is_primary_action:hover,
+button[type="submit"]:focus,
+.is_primary_action:focus {
+  outline: none;
+  border-bottom-color: #27aaa1;
+  background: #48d6cc;
 }
 .button-med {
   padding: 0.3125rem 0.6875rem;
@@ -658,12 +679,17 @@ button + button {
   font-size: 1rem;
   line-height: 1.5;
 }
-input:focus {
+.no-touch input:hover,
+.no-touch select:hover,
+.no-touch textarea:hover,
+select:focus,
+textarea:focus,
+input:focus:not([type="checkbox"]):not([type="radio"]) {
   outline: none;
-  border-color: #3682f2;
-  -webkit-box-shadow: inset 0 0 0.125rem #3682f2;
-  -webkit-box-shadow: inset 0 0 0.125rem #3682f2;
-  box-shadow: inset 0 0 0.125rem #3682f2;
+  border-color: #27aaa1;
+  -webkit-box-shadow: inset 0.1875rem 0.1875rem 0 0 #f4f4f4;
+  -webkit-box-shadow: inset 0.1875rem 0.1875rem 0 0 #f4f4f4;
+  box-shadow: inset 0.1875rem 0.1875rem 0 0 #f4f4f4;
 }
 input:disabled,
 button:disabled,
@@ -700,8 +726,8 @@ input:disabled + span {
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 0;
-  vertical-align: middle;
+  line-height: inherit;
+  vertical-align: baseline;
 }
 .menu {
   position: absolute;
@@ -773,7 +799,7 @@ input:disabled + span {
 .panel .panel-header {
   margin-top: -12px;
   margin-bottom: 1.4375rem;
-  border-bottom: 0.0625rem solid #e9e9e9;
+  border-bottom: 0.0625rem solid #e8e8e8;
   padding-bottom: 0.75rem;
 }
 .panel .panel-header * {
@@ -783,23 +809,23 @@ input:disabled + span {
   position: relative;
   margin-top: 1.4375rem;
   margin-bottom: -12px;
-  border-top: 0.0625rem solid #e9e9e9;
+  border-top: 0.0625rem solid #e8e8e8;
   padding-top: 0.75rem;
 }
 .panel.inset {
-  -webkit-box-shadow: inset 0 0.0625rem 0.0625rem 0 #707070;
-  -webkit-box-shadow: inset 0 0.0625rem 0.0625rem 0 #707070;
-  box-shadow: inset 0 0.0625rem 0.0625rem 0 #707070;
-  background: #e9e9e9;
+  -webkit-box-shadow: inset 0 0.0625rem 0.0625rem 0 #7a7a7a;
+  -webkit-box-shadow: inset 0 0.0625rem 0.0625rem 0 #7a7a7a;
+  box-shadow: inset 0 0.0625rem 0.0625rem 0 #7a7a7a;
+  background: #e8e8e8;
 }
 .panel.bordered {
-  border-color: #ddd;
+  border-color: #dcdcdc;
 }
 .panel.raised {
-  border-bottom-color: #ddd;
-  -webkit-box-shadow: 0 0.125rem 0 0 #ddd;
-  -webkit-box-shadow: 0 0.125rem 0 0 #ddd;
-  box-shadow: 0 0.125rem 0 0 #ddd;
+  border-bottom-color: #dcdcdc;
+  -webkit-box-shadow: 0 0.125rem 0 0 #dcdcdc;
+  -webkit-box-shadow: 0 0.125rem 0 0 #dcdcdc;
+  box-shadow: 0 0.125rem 0 0 #dcdcdc;
 }
 .panel + .panel {
   margin-top: 1.5rem;

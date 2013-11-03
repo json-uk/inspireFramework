@@ -3,41 +3,68 @@
 
 // Theme Variables
 // =================================================
-$baseFontStack = $helvetica; // see font-families in _base_mixins.styl
-$globalBorderRadius = 3px;
+$baseFontStack = $helvetica; // see font-families in mixins/base_mixins.styl
+$globalBorderRadius = 6px;
 
 // Grid Lines Colour
 // set the colour of grid lines when dev-mode == true
 // =================================================
 $gridLinesColour = '';
 
+
+// Main Colour
+// =================================================
+$primaryColour = #34D1C6;
+    
+// Complementary Colors
+$complementaryColour = spin($primaryColour,180);
+// Split Complementary
+$splitComplementaryA = spin($primaryColour,150);
+$splitComplementaryB = spin($primaryColour,-150);
+
+// Triadic
+// Analogous
+// Monochromatic
+// $primaryColourLighter = lighten();
+// $primaryColourDarker = ''; 
+
+
 // Basic Colours
 // =================================================
 $bodyBg = $lightGrey;
-$text = #1b1b1b;
+$text = #0B0B0B;
 $textInverted = invert($text);
 // Colour variables
-$darkGrey = #474747;
-$mediumGrey = #707070;
-$grey = #999999;
-$lightGrey = #F5F5F5;
+$darkGrey = lighten($text,40%);
+$mediumGrey = saturate(darken($textInverted,50%),10%);
+$grey = darken($textInverted,25%);
+$lightGrey = $textInverted;
 
 // Links
-$link = #2E6DCB;
-$linkHover = #3682F2;
+$link = $primaryColour;
+$linkHover = $splitComplementaryA;
 $linkActive = #2559A5;
 $linkFocus = #3682F2;
 $linkVisited = #1C4861;
 
-// Main Theme Colours
-$primaryAction = 'blue';
-$secondaryAction = 'orange';
-$utilityAction = $darkGrey;
+// Button Colours
+$primaryAction = $primaryColour;
+$primaryActionText = $textInverted;
+$secondaryAction = $splitComplementaryA;
+$utilityAction = $splitComplementaryB;
 
+// ====
+// Forms
+// ================================================================================
+$fieldBorderWidth = 2px;
+$fieldBorderColour = $grey;
+$fieldFocusBorderColour = darken($primaryColour, 20%);
+$fieldBackground = white;
+$fieldActiveBackground = $lightGrey;
 // ====
 // Button Themes and Variables
 // ================================================================================
-$buttonBorderWidth = 1px;
+$buttonBorderWidth = 0 0 3px;
 
 // Component Theme Colours
 // =================================================
