@@ -162,12 +162,26 @@ pre {
 }
 
 blockquote {
-  prop('margin', $baseGutter 0 0)
-  prop('border-left', 9px, solid);
-  prop('padding',$baseGutter $baseGutter $baseGutter ($baseGutter * 2));
+  position: relative;
+  blockquoteBasicSettings();
+
+  // Variations
+  &.has_border {
+    blockquoteBorder();
+  }
+  
+  &.has_quotation {
+    blockquoteQuotation();  
+  }
+  cite {
+    citation();
+  }
 }
 
-
+// Coloured Pull-Quotes
+.pullquote {
+  * {display: inline; background: red;}    
+}
 
 
 

@@ -220,7 +220,14 @@ td {
 }
 .truncate {
   overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
+}
+.italics {
+  font-style: italic;
+}
+.decorative_type {
+  font-family: Baskerville, "Goudy Old Style", Palatino, "Book Antiqua", serif;
 }
 /* Have to wrap in @css var; stylus ignores universal selector :( */
   *, *:before, *:after {
@@ -435,9 +442,66 @@ pre code {
   background: none;
 }
 blockquote {
-  margin: 1.5rem 0 0;
-  border-left: 0.5625rem solid;
-  padding: 1.5rem 1.5rem 1.5rem 3rem;
+  position: relative;
+  margin: 1.5rem;
+  padding: 1.5rem;
+  font-size: 120%;
+}
+blockquote.has_border {
+  border-left: 0.125rem dashed #b7b7b7;
+  padding-left: 1.375rem;
+}
+blockquote.has_quotation {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: 110%;
+  color: #d1343f;
+  text-align: center;
+  vertical-align: middle;
+}
+blockquote.has_quotation:before,
+blockquote.has_quotation:after {
+  display: inline-block;
+  opacity: 0.1;
+  filter: alpha(opacity=10);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=10)";
+  position: absolute;
+  top: auto;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  font-size: 800%;
+  font-family: Baskerville, "Goudy Old Style", Palatino, "Book Antiqua", serif;
+  line-height: 1;
+  color: #b7b7b7;
+  z-index: -1;
+}
+blockquote.has_quotation:before {
+  top: 0;
+  text-align: left;
+  content: open-quote;
+}
+blockquote.has_quotation:after {
+  right: 0;
+  text-align: right;
+  bottom: 1.5rem;
+  content: close-quote;
+}
+blockquote cite {
+  font-size: 75%;
+  color: #b7b7b7;
+}
+blockquote cite:before,
+blockquote cite:after {
+  content: ' - ';
+}
+blockquote cite a {
+  color: #34d1c6;
+}
+.pullquote * {
+  display: inline;
+  background: #f00;
 }
 fieldset {
   position: relative;
