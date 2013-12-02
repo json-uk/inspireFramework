@@ -9,10 +9,11 @@ $dev-mode = false;
 // @param $old-ie boolean, false|true
 // Setting this to false removes IE < 9 fallbacks for some mixins
 $old-ie ?= false;
+
 //
 // @param $vendor-prefixes String
 // Used by Nib and custom mixins, outputs these vendor prefixes
-$vendor-prefixes ?= webkit moz ms official
+$vendor-prefixes ?= webkit moz official
 
 
 // ====
@@ -64,9 +65,20 @@ $subPixelCorrection = (0.5 / unit($gridMinWidth,'px')) * 100 * 1%;
 $gridType = mobileFirst;
 
 
-// Colour Palettes
-// types: monocromatic, analogous, complimentary, triad
-//$palette = monocromatic;
+// Warnings printed when required theme vars missing
+// =================================================
+frameworkWarning(message = 'oops...somethign is wrong') {
+  position: relative;
+  background: desaturate(lighten(red,80%),20%);
+  &:before {
+    display: block;
+    position: absolute;
+    top: 0;
+    font-weight: bold;
+    color: red;
+    content: message;
+  }
+}
 
 
 

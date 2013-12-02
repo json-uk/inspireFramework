@@ -36,13 +36,16 @@ typeRhythm(font-scale, margin-before = null, margin-after = null)
       fontSize(new-font-size = round($baseFontSize * ($scaleFactor ** font-scale)))
       line-height remove-unit((ceil((new-font-size / ($lineHeightRatio * $baseFontSize))) * ($lineHeightRatio * $baseFontSize)) / new-font-size)
     
-    if margin-before  > 0 
-      prop('margin-top', ($baseFontSize * ($lineHeightRatio * margin-before)));
-    
-    if margin-after > 0 
-      prop('margin-bottom', $baseFontSize * ($lineHeightRatio * margin-after))
-    else
-      margin-bottom: 0;
+    if margin-before != null
+      if margin-before > 0 
+        prop('margin-top', ($baseFontSize * ($lineHeightRatio * margin-before)));
+      else
+        margin-top: 0;
+    if margin-before != null
+      if margin-after > 0 
+        prop('margin-bottom', $baseFontSize * ($lineHeightRatio * margin-after))
+      else
+        margin-bottom: 0;
 
 
 // Vendor Prefix functions
@@ -57,7 +60,7 @@ vendorProp(prop, args, prefixes = null) {
 argJoin(delim, args) {
   string = ''
   for arg in args {
-    if arg is a 'unit' and arg >= 1 {
+    if arg is a 'unit' and arg >= 1 or arg is a 'unit' and arg < 0 {
       unit(arg) is 'px' ? string += delim + unit((remove-unit(arg) / $baseFontContext),rem) : string += delim + arg
     }else{
       string += delim + arg

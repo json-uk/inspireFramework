@@ -6,8 +6,17 @@
 fieldset {
   position: relative;
   margin: 0;
-  border: none;
-  padding: 0;  
+  if($fieldsetBorder == false) {
+    border: none;
+  }else{
+    // Define Local Variables
+    $borderWidth = $fieldsetBorderWidth is defined ? $fieldsetBorderWidth : 1px;
+    $borderStyle = $fieldsetBorderStyle is defined ? $fieldsetBorderStyle : solid;
+    $borderColour = $fieldsetBorderColour is defined ? $fieldsetBorderColour : $text;
+    // Render Border Rule
+    prop(border, $borderWidth, $fieldsetBorderStyle $fieldsetBorderColour);
+  }
+  padding: $fieldsetPadding is defined ? $fieldsetPadding : 0;  
 }
 .field-group  + .field-group {
   prop(margin-top, $baseGutter / 2);
@@ -15,6 +24,7 @@ fieldset {
 legend {
   heading($h4);
   prop(padding, ($baseGutter / 2) 0 ($baseGutter / 2));
+  
   letter-spacing: normal;
   word-spacing: normal;
 }

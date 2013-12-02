@@ -218,6 +218,17 @@ td {
 .invisible {
   visibility: hidden;
 }
+.clearfix {
+  zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
 .truncate {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -226,8 +237,18 @@ td {
 .italics {
   font-style: italic;
 }
-.decorative_type {
+.decorative_type,
+.inspire-quote:before,
+.inspire-quote:after {
   font-family: Baskerville, "Goudy Old Style", Palatino, "Book Antiqua", serif;
+}
+.baseline_margin,
+p,
+ul,
+ol,
+.if-panel + .if-panel,
+.if-card + .if-card {
+  margin: 1.5rem 0 0;
 }
 /* Have to wrap in @css var; stylus ignores universal selector :( */
   *, *:before, *:after {
@@ -238,17 +259,6 @@ td {
     /* Uncomment to support IE7 */
     /* *behavior: url(/stylus/boxsizing.htc);*/
   }
-.cf {
-  zoom: 1;
-}
-.cf:before,
-.cf:after {
-  content: "";
-  display: table;
-}
-.cf:after {
-  clear: both;
-}
 .col {
   display: inline-block;
   width: 100%;
@@ -277,7 +287,7 @@ td {
   word-spacing: -2px;
 }
 .has_nested_cols {
-  margin-left: -24px;
+  margin-left: -1.5rem;
 }
 html {
   font-size: 100%;
@@ -298,22 +308,28 @@ h6 {
   font-weight: bold;
 }
 h1 {
+  font-size: 4.25rem;
+  line-height: 1.0588235294117647;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+h1.is_lead_heading {
   font-size: 6.875rem;
   line-height: 1.0909090909090908;
   margin-top: 1.5rem;
   margin-bottom: 3rem;
 }
 h2 {
-  font-size: 4.25rem;
-  line-height: 1.0588235294117647;
+  font-size: 2.625rem;
+  line-height: 1.1428571428571428;
   margin-top: 3rem;
   margin-bottom: 1.5rem;
 }
 h3 {
-  font-size: 2.625rem;
-  line-height: 1.1428571428571428;
-  margin-top: 1.5rem;
-  margin-bottom: 0;
+  font-size: 2.0625rem;
+  line-height: 1.4545454545454546;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 h4,
 dt {
@@ -332,30 +348,39 @@ h5 {
   margin-bottom: 0;
 }
 h6 {
-  font-size: 0.625rem;
-  line-height: 2.4;
+  font-size: 0.8125rem;
+  line-height: 1.8461538461538463;
   margin-top: 1.5rem;
   margin-bottom: 0;
 }
-p {
-  margin: 0;
-}
-p + p {
-  margin-top: 1.5rem;
+dl {
+  margin: 1.5rem 0 0;
 }
 dl dt {
   font-size: 2.25rem;
   line-height: 1.3333333333333333;
 }
 dl dd {
-  margin-top: 1.5rem;
+  margin: 0;
+}
+.has_columns dt,
+.has_columns dd {
+  display: table-cell;
+  vertical-align: top;
+}
+.has_columns dt {
+  font-size: 1.5rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+.has_columns dd {
+  padding-left: 1.5rem;
 }
 ul,
 ol {
-  margin: 1.5rem 0 0;
   padding-left: 2.25rem;
 }
-ul.no-bullet {
+.no-bullet li {
   list-style: none;
 }
 a {
@@ -376,6 +401,10 @@ a:focus {
 }
 a:visited {
   color: #1c4861;
+}
+small {
+  font-size: 1.25rem;
+  line-height: 1.2;
 }
 dfn {
   border: 0.0625rem dotted;
@@ -423,15 +452,14 @@ pre {
 }
 pre[data-caption] {
   position: relative;
-  padding-top: 3rem;
+  padding-top: 1.5rem;
 }
 pre[data-caption]:before {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #b7b7b7;
-  padding: 0.75rem;
+  top: 0.25rem;
+  left: 0.25rem;
+  background: #fff;
+  padding: 0.25rem 0.375rem;
   font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: bold;
   content: attr(data-caption);
@@ -441,26 +469,24 @@ pre code {
   border: none;
   background: none;
 }
-blockquote {
+.inspire-blockquote {
   position: relative;
-  margin: 1.5rem;
-  padding: 1.5rem;
-  font-size: 120%;
-}
-blockquote.has_border {
-  border-left: 0.125rem dashed #b7b7b7;
-  padding-left: 1.375rem;
-}
-blockquote.has_quotation {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  font-size: 110%;
+  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
+  line-height: 1.3333333333333333;
   color: #d1343f;
+}
+.inspire-blockquote.has_border {
+  border-left: 0.125rem solid;
+  padding: 0 0.75rem 0 0.625rem;
+}
+.inspire-blockquote.has_quotation {
   text-align: center;
   vertical-align: middle;
+  padding: 0.75rem;
 }
-blockquote.has_quotation:before,
-blockquote.has_quotation:after {
+.inspire-blockquote.has_quotation:before {
+  z-index: -1;
   display: inline-block;
   opacity: 0.1;
   filter: alpha(opacity=10);
@@ -469,39 +495,27 @@ blockquote.has_quotation:after {
   top: auto;
   right: 0;
   left: 0;
-  width: 100%;
-  height: 50%;
   font-size: 800%;
   font-family: Baskerville, "Goudy Old Style", Palatino, "Book Antiqua", serif;
   line-height: 1;
-  color: #b7b7b7;
-  z-index: -1;
-}
-blockquote.has_quotation:before {
-  top: 0;
   text-align: left;
-  content: open-quote;
+  color: #858585;
+  content: '\201C';
 }
-blockquote.has_quotation:after {
-  right: 0;
-  text-align: right;
-  bottom: 1.5rem;
-  content: close-quote;
-}
-blockquote cite {
+.inspire-blockquote cite {
+  display: inline-block;
   font-size: 75%;
+}
+cite {
   color: #b7b7b7;
 }
-blockquote cite:before,
-blockquote cite:after {
-  content: ' - ';
+cite:before {
+  content: '- ';
 }
-blockquote cite a {
-  color: #34d1c6;
-}
-.pullquote * {
-  display: inline;
-  background: #f00;
+.inspire-quote {
+  background: #d1343f;
+  padding: 0 0.125rem;
+  color: #faebec;
 }
 fieldset {
   position: relative;
@@ -839,7 +853,7 @@ input:disabled + span {
 .toolbar-button input:checked ~ .toolbar-button-label {
   background: #800080;
 }
-.panel {
+.if-panel {
   -webkit-border-radius: 0.25rem;
   -moz-border-radius: 0.25rem;
   -webkit-border-radius: 0.25rem;
@@ -848,49 +862,72 @@ input:disabled + span {
   padding: 0 1.4375rem;
   background: #fff;
 }
-.panel:before,
-.panel:after {
+.if-panel:before,
+.if-panel:after {
   display: block;
   height: 0;
   content: '';
 }
-.panel:before {
+.if-panel:before {
   margin-bottom: 1.4375rem;
 }
-.panel:after {
+.if-panel:after {
   margin-top: 1.4375rem;
 }
-.panel .panel-header {
-  margin-top: -12px;
+.if-panel .panel-header {
+  margin-top: -0.75rem;
   margin-bottom: 1.4375rem;
   border-bottom: 0.0625rem solid #e8e8e8;
   padding-bottom: 0.75rem;
 }
-.panel .panel-header * {
+.if-panel .panel-header * {
   margin: 0;
 }
-.panel .panel-footer {
+.if-panel .panel-footer {
   position: relative;
   margin-top: 1.4375rem;
-  margin-bottom: -12px;
+  margin-bottom: -0.75rem;
   border-top: 0.0625rem solid #e8e8e8;
   padding-top: 0.75rem;
 }
-.panel.inset {
+.if-panel.inset {
   -webkit-box-shadow: inset 0 0.0625rem 0.0625rem 0 #7a7a7a;
   -webkit-box-shadow: inset 0 0.0625rem 0.0625rem 0 #7a7a7a;
   box-shadow: inset 0 0.0625rem 0.0625rem 0 #7a7a7a;
   background: #e8e8e8;
 }
-.panel.bordered {
+.if-panel.bordered {
   border-color: #dcdcdc;
 }
-.panel.raised {
+.if-panel.raised {
   border-bottom-color: #dcdcdc;
   -webkit-box-shadow: 0 0.125rem 0 0 #dcdcdc;
   -webkit-box-shadow: 0 0.125rem 0 0 #dcdcdc;
   box-shadow: 0 0.125rem 0 0 #dcdcdc;
 }
-.panel + .panel {
-  margin-top: 1.5rem;
+.is_notification.info {
+  position: relative;
+  background: #fad1d1;
+}
+.is_notification.info:before {
+  display: block;
+  position: absolute;
+  top: 0;
+  font-weight: bold;
+  color: #f00;
+  content: '$panelInfoBackground var is missing in your theme!';
+}
+.displaytable.no-flexbox.no-flexboxlegacy .card-image,
+.displaytable.no-flexbox.no-flexboxlegacy .card-content,
+.displaytable.no-flexbox.no-flexboxlegacy .card-control {
+  display: table-cell;
+}
+.card-control {
+  position: absolute;
+}
+.card-control button {
+  text-align: center;
+}
+.has_controls .card-content {
+  padding-right: $;
 }

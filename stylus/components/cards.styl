@@ -1,0 +1,47 @@
+// ====
+// Cards
+// ================================================================================
+.if-card {
+
+  & + .if-card {
+    @extend .baseline_margin;
+  }
+}
+
+// Card Components
+// =================================================
+
+// If flex-box
+.flexbox.no-flexboxlegacy {
+
+}
+.flexboxlegacy.no-flexbox {
+
+}
+// no-flex-box but supports display table
+.displaytable.no-flexbox.no-flexboxlegacy {
+  .card-image, .card-content,
+  .card-control {
+    display: table-cell;
+  }    
+}
+// Images
+.card-image {
+
+}
+// Controls
+.card-control {
+  position: absolute;
+  button {
+    text-align: center;  
+  }
+  
+  
+}
+// Content
+.card-content {
+  .has_controls & {
+    prop(padding-right, $)
+  }  
+}
+

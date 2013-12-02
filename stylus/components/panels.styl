@@ -1,7 +1,7 @@
 // ====
 // Panels
 // ================================================================================
-.panel {
+.if-panel {
   // Transparent border for use with the 'bordered' utility
   borderRadius($baseGutter / 6);
   prop('border', 1px, solid transparent);
@@ -29,7 +29,6 @@
   &.inset {
     boxShadow(inset 0 1px 1px 0 $mediumGrey);
     background: $panelInsetBg;
-
   }
   &.bordered {
     border-color: $panelBorder;  
@@ -38,19 +37,25 @@
     prop('border-bottom-color', $panelRaisedBorder); 
     boxShadow(0 2px 0 0 $panelRaisedBorder); 
   }
-}
-.panel + .panel {
-  prop('margin-top',$baseGutter);
-  
+  & + .if-panel {
+    @extend .baseline_margin;
+  }
 }
 
 
 // Notification Panels
 // =================================================
-.notification-panel {
+.is_notification {
   
-  // &.is_
-  // &.is_info {}
+  &.info {
+    if $panelInfoBackground is defined {
+      background: $panelInfoBackground;
+      color: darken($panelInfoBackground, 40%);
+    }else{
+      frameworkWarning('$panelInfoBackground var is missing in your theme!');
+    }
+  }
+  // &.is_warning {}
   // &.is_alert {}
 }
 

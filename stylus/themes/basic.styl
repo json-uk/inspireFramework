@@ -1,11 +1,11 @@
 // Theme - Basic
 // ============================================
 
-// Theme Variables
+// Global Variables
 // =================================================
 $baseFontStack = $helvetica; // see font-families in mixins/base_mixins.styl
-$globalBorderRadius = 6px;
-$raisedBorderWidth = 3px;
+$globalBorderRadius = 6px; // used for all border-radii
+$raisedBorderWidth = 3px; // used for raised panels and buttons
 
 //prop('padding',($baseGutter / 2) $baseGutter ($baseGutter / 2) ($baseGutter .25));
 
@@ -16,7 +16,7 @@ $gridLinesColour = '';
 
 
 
-// Main Colour
+// Colour Themes
 // =================================================
 $primaryColour = #34D1C6;
     
@@ -44,107 +44,105 @@ $mediumGrey = saturate(darken($textInverted,50%),10%);
 $grey = darken($textInverted,25%);
 $lightGrey = $textInverted;
 
-// Links
+// ====
+// Text Elements
+// ================================================================================
+
+// <a/>
+// =================================================
 $link = $primaryColour;
 $linkHover = $splitComplementaryA;
 $linkActive = #2559A5;
 $linkFocus = #3682F2;
 $linkVisited = #1C4861;
 
-// Button Colours
-$primaryAction = $primaryColour;
-$primaryActionText = $textInverted;
-$secondaryAction = $splitComplementaryA;
-$utilityAction = $splitComplementaryB;
 
 // ====
-// Forms
+// Form Elements
 // ================================================================================
+
+// <fieldset/>
+// =================================================
+
+$fieldsetBorder = false; // Enables/Disables borders.
+// @param $fieldsetBorderWidth: sets the border offset width(s) 
+// @param $fieldsetBorderStyle: sets the border style: See MDN https://developer.mozilla.org/en-US/docs/Web/CSS/border-style 
+// @param $fieldsetBorderStyle: sets the border colour, expects any valid colour
+//
+// #Uncomment to set border params (if $fieldsetBorder == true)
+// $fieldsetBorderWidth = 1px;
+// $fieldsetBorderStyle = solid;
+// $fieldsetBorderColour = transparent;
+// $fieldsetPadding = $baseGutter;
+  
+
+// <legend/>
+// =================================================
+
+// <input/>, <select/>, <textarea/>
+// =================================================
 $fieldBorderWidth = 2px;
 $fieldBorderColour = $grey;
 $fieldFocusBorderColour = darken($primaryColour, 20%);
+$fieldTextColour = $primaryColour;
 $fieldBackground = white;
 $fieldActiveBackground = $lightGrey;
+
+// <input type="radio"/> and <input type="checkbox"/>
+// =================================================
+
 // ====
 // Button Theme Settings
 // ================================================================================
 $buttonBorderWidth = 0 0 $raisedBorderWidth;
+// Primary Action
+$primaryAction = $primaryColour;
+$primaryActionText = $textInverted;
+//Secondary Action
+$secondaryAction = $splitComplementaryA;
+// Utility Buttons
+$utilityAction = $splitComplementaryB;
 
 
 // ====
 // Element Overrides
 // ================================================================================
 
-// Blockquotes
-$blockquoteBorderWidth = 2px;
-$blockquoteBorderStyle = dashed;
-$blockquoteBorderColour = $grey;
-$blockquotePadding = $baseGutter;
+// <blockquote/>
+// =================================================
+
+// $blockquoteMargin = $baseGutter;
+$blockquotePadding = ($baseGutter / 2);
 $blockquoteBlockColour = $complementaryColour;
 
-// Basic Blockquote Mixin
-blockquoteBasicSettings() {
-  prop(margin, $baseGutter);
-  prop(padding, $blockquotePadding);
-  font-size: 120%;
-}
-// Blockquote Border Mixin
-// Includes padding adjustment for border widths
-blockquoteBorder() {
-  prop(border-left, $blockquoteBorderWidth, $blockquoteBorderStyle $blockquoteBorderColour);
-  prop(padding-left, $blockquotePadding - $blockquoteBorderWidth);
-}
+// Bordered Blockquote
+// Border Type accepts any valid border property
+// @param $blockquoteBorder
+$blockquoteBorder = border-left;
+// end border type
+$blockquoteBorderWidth = 2px;
+$blockquoteBorderStyle = solid;
+$blockquoteBorderColour = $grey;
+$blockquoteBorderRadius = 0;
+// Decorative Glyph Blockquote
+//$blockquoteQuotationGlyph = '\201C';
+$blockquoteQuotationGlyphSize = 800%;
+//$blockquoteQuotationGlyphFont = $decorative;
+$blockquoteQuotationColour = $complementaryColour;
+$blockquoteQuotationGlyphOpacity = .1;
 
-// Blockquote Quotation Mixin
-// @param isGlyph false|true, if true will return the alternate pseudo element styles
-// and will use data-glyph-before and data-*-after content.
+// ====
+// <q/>
+// ================================================================================
+$inlineQuoteColor = lighten($complementaryColour,90%);
+$inlineQuoteBackground =$complementaryColour;
 
-blockquoteQuotation() {
-  prop(padding-left, $blockquotePadding);
-  prop(padding-right, $blockquotePadding);
-  font-size: 110%;
-  color: $complementaryColour;
-  text-align: center;
-  vertical-align: middle;
+// <cite />
+// =================================================
+$citeColour = $grey;
+$citeLinkColour = $link;
+$citeGlyphContent = '- ';
 
-  &:before, &:after {
-    display: inline-block;
-    opacity: .1;
-    position: absolute;
-    top: auto;
-    right: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    font-size: 800%;
-    font-family: $decorative;
-    line-height: 1;
-    color: $grey;
-    z-index: -1;
-  }
-  &:before {
-    top: 0;
-    text-align: left;
-    content: open-quote;
-  }
-  &:after {
-    right: 0;
-    text-align: right;
-    prop(bottom, $blockquotePadding);
-
-    content: close-quote;
-  }
-}
-
-// Citation Mixins
-citation() { 
-  font-size: 75%;
-  color: $grey;
-  &:before, &:after {
-    content: ' - ';
-  }
-  a {color: $link;}
-}
 
 // Component Theme Settings
 // =================================================

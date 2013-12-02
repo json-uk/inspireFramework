@@ -22,13 +22,16 @@ h5, h6 {
   font-weight: bold; 
 }
 h1 {
-  typeRhythm(4, 1, 2);
+  typeRhythm(3, 1, 1);
+  &.is_lead_heading {
+    typeRhythm(4, 1, 2);
+  }
 }
 h2 {
-  typeRhythm(3,2,1);
+  typeRhythm(2,2,1);
 }
 h3 {
-  typeRhythm(2, 1, null);  
+  typeRhythm(1.5, .5, .5);  
 }
 h4, dt {
   // prop('margin', $baseGutter 0);
@@ -44,38 +47,51 @@ h5 {
   typeRhythm(0, 1, null);
 }
 h6 {
-  typeRhythm(-1, 1, null);
+  typeRhythm(-.5, 1, null);
 }
 
 // Paragraphs and Lists
 p {
-  margin: 0;
-  + p {
-    prop('margin-top', $baseGutter);
-  }
+  @extend .baseline_margin;
 }
 
 dl {
+  prop(margin, $baseGutter 0 0);
   dt {
     heading($h3);
   }
   dd {
-    prop('margin-top', $baseGutter);
+    margin: 0;
   }
 }
+.has_columns {
+  dt, dd {
+    display: table-cell;
+    vertical-align: top;
+  }
+  dt {
+    heading($h4);
+    white-space: nowrap;
+  }
+  dd {
+    prop(padding-left, $baseGutter);
+  }
+
+}
 ul, ol {
-  prop('margin', $baseGutter 0 0);
+  @extend .baseline_margin;
   prop('padding-left', ($baseGutter * 1.5));
 }
 ul {
-  &.no-bullet {
-    list-style: none;
-  }
+  
 }
 ol {
 
 }
 li {
+  .no-bullet & {
+    list-style: none;
+  }
 
 }
 
@@ -83,36 +99,34 @@ li {
 a {
   color: $link;
   text-decoration: underline;
-}
-// a:link {
-
-// }
-a:hover {
-  color: $linkHover;
-  text-decoration: none;
-}
-a:active {
-  color: $linkActive;
-}
-a:focus {
-  outline: none;
-  background: $linkHover;
-  color: $darkGrey;
-}
-a:visited {
-  color: $linkVisited;
+  &:hover {
+    color: $linkHover;
+    text-decoration: none;
+  }
+  &:active {
+    color: $linkActive;
+  }
+  &:focus {
+    outline: none;
+    background: $linkHover;
+    color: $darkGrey;
+  }
+  &:visited {
+    color: $linkVisited;
+  }
 }
 
 // Misc Elements
+small {
+  typeRhythm(.5,null,null);
+}
 dfn {
   prop(border, 1px, dotted);
   border-radius(3px);
 }
-
 ins {
   // removing text-decoration; too close to link styling
   text-decoration: none;
-
   &:before{
     content: '\BB';
   }
@@ -121,7 +135,11 @@ ins {
 code {
   display: inline-block;
   prop('padding', 0 6px);
-  background: $textInverted;
+  if($codeblockBackground is defined) {
+    background: $codeblockBackground;
+  }else{
+    background: $textInverted;
+  }
   borderRadius(3px);
   vertical-align: top;
 }
@@ -140,15 +158,18 @@ pre {
   // Adds a 'caption' of sorts to the top of the pre box
   &[data-caption] {
     position: relative;
-    prop(padding-top, $baseGutter * 2);
+    prop(padding-top, $baseGutter);
     
     &:before {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: $grey;
-      prop(padding, $baseGutter / 2);
+      prop(top,4px);
+      prop(left,4px);
+      if($codeblockCaptionBackground is defined) {
+        background: $codeblockCaptionBackground;
+      }else{
+        background: white;
+      }
+      prop(padding, ($baseGutter / 6) ($baseGutter / 4));
       font-family: $helvetica;
       font-weight: bold;
       content: attr(data-caption);
@@ -161,29 +182,104 @@ pre {
   }
 }
 
-blockquote {
+// Blockquotes
+.inspire-blockquote {
   position: relative;
-  blockquoteBasicSettings();
-
+  if($blockquoteMargin is defined) {
+    prop(margin, $blockquoteMargin);
+  }else{
+    prop(margin-bottom, $baseGutter);
+  }
+  typeRhythm(.25, null, null);  
+  if($blockquoteBlockColour is defined){
+    color: $blockquoteBlockColour;
+  }
   // Variations
   &.has_border {
-    blockquoteBorder();
+    if ($blockquoteBorder is defined) {
+      $borderType = $blockquoteBorder
+    }else{
+      $borderType = border-left
+    }
+    if($blockquoteBorderWidth is defined) {
+        $borderWidth = $blockquoteBorderWidth;
+    }else{
+      $borderWidth = 2px;
+    }
+    if($blockquoteBorderStyle is defined) {
+      $borderStyle = $blockquoteBorderStyle;
+    }else{
+      $borderStyle = solid;
+    }
+    if($blockquotePadding is defined) {
+      $padding = $blockquotePadding;
+    }else{
+      $padding = $baseGutter;
+    }
+    prop($borderType, $borderWidth, $borderStyle);
+    prop(padding, 0 $padding 0 ($padding - $borderWidth));
+    
   }
   
+  // Large wrapping quoatation
   &.has_quotation {
-    blockquoteQuotation();  
+    text-align: center;
+    vertical-align: middle;
+    $padding ?= $blockquotePadding is defined ? $blockquotePadding : ($baseGutter / 2) $baseGutter ($baseGutter / 2) $baseGutter * 2;
+    prop(padding, $padding);
+    
+    &:before {
+      z-index: -1;
+      display: inline-block;
+      if($blockquoteQuotationGlyphOpacity is defined) {
+        opacity: .1;
+      }
+      position: absolute;
+      top: auto;
+      right: 0;
+      left: 0;
+      font-size: $blockquoteQuotationGlyphSize is defined ? $blockquoteQuotationGlyphSize : 400%;
+      font-family: $blockquoteQuotationGlyphFont is defined ? $blockquoteQuotationGlyphFont : $decorative;  
+      line-height: 1;
+      text-align: left;
+      color: $blockquoteQuotationGlyphColour is defined ? $blockquoteQuotationGlyphColour : lighten($text,50%);
+      content: $blockquoteQuotationGlyph is defined ? $blockquoteQuotationGlyph : '\201C';
+    }
   }
   cite {
-    citation();
+    display: inline-block;
+    font-size: 75%;
+  }
+}
+// Cite
+cite {
+  if($citeColour is defined) {
+    color: $citeColour;
+  }
+  if($citeGlyphContent is defined) {
+    &:before {
+      content: $citeGlyphContent;
+    }
   }
 }
 
-// Coloured Pull-Quotes
-.pullquote {
-  * {display: inline; background: red;}    
+// Inline quotes
+.inspire-quote {
+  if($inlineQuoteBackground is defined) {
+    background: $inlineQuoteBackground;
+    prop(padding,0 2px);
+  }
+  if($inlineQuoteColor is defined) {
+    color: $inlineQuoteColor;
+  }
+  &:before, &:after {
+    @extend .decorative_type;
+  }
 }
-
-
+// // Colour-blocked pullquote
+// .is_pullquote {
+//   colourBlockedText();
+// }
 
 
 
