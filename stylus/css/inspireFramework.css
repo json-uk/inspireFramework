@@ -874,22 +874,6 @@ input:disabled + span {
 .if-panel:after {
   margin-top: 1.4375rem;
 }
-.if-panel .panel-header {
-  margin-top: -0.75rem;
-  margin-bottom: 1.4375rem;
-  border-bottom: 0.0625rem solid #e8e8e8;
-  padding-bottom: 0.75rem;
-}
-.if-panel .panel-header * {
-  margin: 0;
-}
-.if-panel .panel-footer {
-  position: relative;
-  margin-top: 1.4375rem;
-  margin-bottom: -0.75rem;
-  border-top: 0.0625rem solid #e8e8e8;
-  padding-top: 0.75rem;
-}
 .if-panel.inset {
   -webkit-box-shadow: inset 0 0.0625rem 0.0625rem 0 #7a7a7a;
   -webkit-box-shadow: inset 0 0.0625rem 0.0625rem 0 #7a7a7a;
@@ -905,13 +889,38 @@ input:disabled + span {
   -webkit-box-shadow: 0 0.125rem 0 0 #dcdcdc;
   box-shadow: 0 0.125rem 0 0 #dcdcdc;
 }
+.if-panel-header,
+.if-panel-footer {
+  margin-right: -1.5rem;
+  margin-left: -1.5rem;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+}
+.if-panel-header {
+  margin-top: -0.75rem;
+  margin-bottom: 1.4375rem;
+  border-bottom: 0.0625rem solid #e8e8e8;
+  padding: 0 1.5rem 0.75rem;
+}
+.if-panel-header * {
+  margin: 0;
+}
+.if-panel-footer {
+  position: relative;
+  margin-top: 1.4375rem;
+  margin-bottom: -0.75rem;
+  border-top: 0.0625rem solid #e8e8e8;
+  padding-top: 0.75rem;
+}
+.is_notification {
+  width: auto;
+}
 .is_notification.info {
   position: relative;
   background: #fad1d1;
 }
 .is_notification.info:before {
   display: block;
-  position: absolute;
   top: 0;
   font-weight: bold;
   color: #f00;

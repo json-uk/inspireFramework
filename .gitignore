@@ -2,8 +2,10 @@
 *.sublime-workspace
 .DS_Store
 _site
+basic.html
 example.html
 forms.html
 grid.html
 index.html
 panels.html
+stylus/examples

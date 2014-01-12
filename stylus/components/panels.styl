@@ -8,22 +8,6 @@
   modulePadding($baseGutter - 1);
   background: $panelBg;
   
-  .panel-header {
-    prop('margin-top', -($baseGutter / 2));
-    prop('margin-bottom', $baseGutter - 1);
-    prop('border-bottom',1px,solid $panelHeadBorder);
-    prop('padding-bottom', $baseGutter / 2);
-    * {margin: 0;}
-  }
-
-  .panel-footer {
-    position: relative;
-    prop('margin-top', $baseGutter - 1);
-    prop('margin-bottom', -($baseGutter / 2));
-    prop('border-top', 1px, solid $panelFootBorder);    
-    prop('padding-top', $baseGutter / 2);
-  }
-
   // Panel Utility Classes
   // =================================================
   &.inset {
@@ -41,12 +25,36 @@
     @extend .baseline_margin;
   }
 }
+.if-panel-header, .if-panel-footer {
+  prop(margin-right, -($baseGutter));
+  prop(margin-left, -($baseGutter));
+  prop(padding-right, $baseGutter);
+  prop(padding-left, $baseGutter);
+}
+.if-panel-header {
+  prop(margin-top, -($baseGutter / 2));
+  prop(margin-bottom, $baseGutter - 1);
+  if $incluePanelHeadBorder is true {
+    prop('border-bottom',1px,solid $panelHeadBorder);
+  }
+  prop(padding, 0 $baseGutter $baseGutter / 2);
+  * {margin: 0;}
+}
+
+.if-panel-footer {
+  position: relative;
+  prop('margin-top', $baseGutter - 1);
+  prop('margin-bottom', -($baseGutter / 2));
+  prop('border-top', 1px, solid $panelFootBorder);    
+  prop('padding-top', $baseGutter / 2);
+}
 
 
 // Notification Panels
 // =================================================
 .is_notification {
-  
+  width: auto;`
+
   &.info {
     if $panelInfoBackground is defined {
       background: $panelInfoBackground;

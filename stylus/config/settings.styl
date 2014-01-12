@@ -4,7 +4,7 @@
 
 // @param $dev-mode boolean, false|true
 // value of true adds baseline grid lines
-$dev-mode = false;
+$dev-mode ?= false;
 //
 // @param $old-ie boolean, false|true
 // Setting this to false removes IE < 9 fallbacks for some mixins
@@ -21,7 +21,7 @@ $vendor-prefixes ?= webkit moz official
 // These params based on http://www.gridlover.net/ for vertical rhythm
 // ================================================================================
 //
-// DO NOT CHANGE
+// DO NOT CHANGE - this is the browser default
 $baseFontContext = 16px;
 //
 // @param $baseFontSize unit
@@ -57,6 +57,7 @@ $gridEmsWidthEms = unit($gridMaxWidth / $baseFontSize, 'em');
 // Total number of columns
 $colsTotal = 12;
 // From the article here: http://tylertate.com/blog/2012/01/05/subpixel-rounding.html
+// solves IE stupidity (when old-ie == true)
 $subPixelCorrection = (0.5 / unit($gridMinWidth,'px')) * 100 * 1%;
 
 
@@ -72,7 +73,6 @@ frameworkWarning(message = 'oops...somethign is wrong') {
   background: desaturate(lighten(red,80%),20%);
   &:before {
     display: block;
-    position: absolute;
     top: 0;
     font-weight: bold;
     color: red;

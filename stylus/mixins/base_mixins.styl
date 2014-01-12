@@ -92,7 +92,14 @@ lineHeight(size = $baseFontSize, strOnly = false) {
 $phoneMax = unit((539 / remove-unit($baseFontContext)),'em');
 $tabletMin = unit((540 / remove-unit($baseFontContext)),'em');
 $tabletMax = unit((800 / remove-unit($baseFontContext)),'em');
-$desktopMin = unit((960 / remove-unit($baseFontContext)),'em');
+$desktopMin = unit(($gridMinWidth / remove-unit($baseFontContext)),'em');
+$desktopMax = unit(($gridMaxWidth / remove-unit($baseFontContext)),'em');
+// @media variables
+// Use in @media like this: 
+// @media $lessThanTablet { ... }
+$mq_lessThanTablet = "screen and (max-width: " + unit(($tabletMin - 1) / 16, em) + ")";
+$mq_lessThanDesktop = "screen and (max-width: " + unit(($desktopMin - 1) / 16, em) + ")";
+$mq_desktopAndAbove = "screen and (min-width: " + unit($desktopMin / 16, em) + ")";
 
 
 // Column
@@ -111,7 +118,7 @@ column(count = 1, cols = $colsTotal) {
 // @param count: 1[-11], Number of columns to push
 // @param cols: 12, Number of total cols; used as basis for calculating total width
 // =================================================
-push(count = 1, cols = 12) {
+push(count = 1, cols = $colsTotal) {
   $columnWidth = unit((100 / cols) * count,'%');
   margin-left: $columnWidth;
 }
@@ -120,7 +127,7 @@ push(count = 1, cols = 12) {
 // @param cols: 12, Number of total cols; used as basis for calculating total width
 // =================================================
 
-pull(count = 1, cols = 12) {
+pull(count = 1, cols = $colsTotal) {
   $columnWidth = unit((100 / cols) * count,'%');
   margin-right: -($columnWidth);
 }
@@ -136,7 +143,7 @@ pull(count = 1, cols = 12) {
 // 
 // Example Use:
 // p {
-//   prop('border', 12px, solid blue); 
+//   prop(border, 12px, solid blue); 
 // }
 // 
 // Will produce:
